@@ -1,13 +1,13 @@
 # 🗳️ Voter Roll OCR + Religion Classifier
 
-A FastAPI app that ingests scanned ECI Final Roll PDFs, runs them through
-**Sarvam AI's Document Intelligence API**, parses voter cards (नाम / पिता का
+A FastAPI app that ingests scanned ECI Final Roll PDFs, processes them through
+**Google Gemini with LangChain**, parses voter cards (नाम / पिता का
 नाम / आयु / लिंग / Voter ID), and classifies each voter as Hindu / Muslim /
 Sikh / Unknown using a rule-based Devanagari token classifier. Built for
 constituency 169 — बक्शी का तालाब (Lucknow, UP).
 
 - **Backend:** FastAPI + asyncio + SQLite
-- **OCR:** Sarvam Document Intelligence (`hi-IN`, markdown output)
+- **LLM:** Google Gemini with LangChain
 - **Frontend:** Vanilla JS, single page, WebSocket live progress
 - **Outputs:** Per-PDF JSON + multi-sheet Excel + summary JSON
 
@@ -16,22 +16,18 @@ constituency 169 — बक्शी का तालाब (Lucknow, UP).
 ## Quick start
 
 ```bash
-# 1. System deps (poppler is no longer required — we use pypdf for splitting)
-brew install poppler        # mac (only if you also want PDF→image rendering)
-sudo apt install poppler-utils  # linux
-
-# 2. Python deps
+# 1. Python deps
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# 3. Configure
+# 2. Configure
 cp .env.example .env
-# Edit .env and set SARVAM_API_KEY
+# Edit .env and set GEMINI_API_KEY
 
-# 4. Run
+# 3. Run
 uvicorn backend.main:app --reload --port 8000
 
-# 5. Open
+# 4. Open
 open http://localhost:8000
 ```
 
@@ -49,16 +45,16 @@ PDF upload  ─▶  data/uploads/<job>.pdf
         Job created in SQLite
                   │
                   ▼
-        Split into 10-page chunks ──┐
-                  │                  │
-          For each chunk:            │ (parallel: MAX_CONCURRENT_CHUNKS_PER_PDF)
-                  │                  │
-                  ▼                  │
-        Sarvam Doc Intelligence ◀────┘
-        (create job → upload → start → poll → download)
+        Split into chunks ──┐
+                  │          │
+          For each chunk:    │ (parallel: MAX_CONCURRENT_CHUNKS_PER_PDF)
+                  │          │
+                  ▼          │
+        Gemini + LangChain ◀─┘
+        (process and extract text)
                   │
                   ▼
-        Parse voter cards from markdown
+        Parse voter cards
                   │
                   ▼
         Religion classifier (rule-based Devanagari tokens)
@@ -70,18 +66,17 @@ PDF upload  ─▶  data/uploads/<job>.pdf
         Aggregate → JSON + Excel + summary JSON
 ```
 
-Each chunk is independently checkpointed in the `job_chunks` table. If the
-server crashes mid-job, on restart `lifespan()` calls `resume_pending()` which
-re-launches every job whose status is `queued` or `processing`. Only chunks
-that were not yet `completed` are re-submitted to Sarvam.
+Each chunk is independently checkpointed in the database. If the server crashes
+mid-job, on restart `lifespan()` calls `resume_pending()` which re-launches
+every job whose status is `queued` or `processing`. Only chunks that were not
+yet `completed` are re-submitted.
 
 ### File map
 
 ```
 backend/
   main.py                FastAPI app, REST endpoints, WebSocket
-  sarvam_client.py       Async client for Sarvam Doc Intelligence API
-  pdf_processor.py       Split PDF into chunks, parse markdown → voters
+  pdf_processor.py       Split PDF into chunks, extract and parse text
   religion_classifier.py Rule-based Devanagari token classifier
   job_manager.py         SQLite job + chunk tracking, async orchestration
   output_generator.py    JSON / Excel / summary writers
@@ -94,9 +89,8 @@ frontend/
   app.js                 Drag/drop, live progress via WebSocket
 
 data/
-  uploads/               Uploaded PDFs + per-job chunk dirs
+  uploads/               Uploaded PDFs
   outputs/               Generated JSON + Excel
-  jobs.db                SQLite checkpoint store
 ```
 
 ---

@@ -1,0 +1,26 @@
+[Unit]
+Description=Voter OCR FastAPI Application
+After=network.target
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/voter-ocr
+Environment="PATH=/var/www/voter-ocr/venv/bin"
+ExecStart=/var/www/voter-ocr/venv/bin/gunicorn backend.main:app \
+    --config gunicorn_config.py \
+    --bind 127.0.0.1:8000 \
+    --workers 4 \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --timeout 120 \
+    --access-logfile /var/log/voter-ocr/access.log \
+    --error-logfile /var/log/voter-ocr/error.log
+
+Restart=always
+RestartSec=10
+StandardOutput=append:/var/log/voter-ocr/gunicorn.log
+StandardError=append:/var/log/voter-ocr/error.log
+
+[Install]
+WantedBy=multi-user.target

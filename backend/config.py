@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
+ENVIRONMENT = os.getenv("ENVIRONMENT", "development")  # development | production
 
 # LLM provider selection
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini").lower()
@@ -48,3 +49,6 @@ MAX_UPLOAD_SIZE_BYTES = MAX_UPLOAD_SIZE_MB * 1024 * 1024
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+# Production settings
+DEBUG = ENVIRONMENT != "production"

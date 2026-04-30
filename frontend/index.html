@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Voter Roll OCR — Booth Validator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+<header class="app-header">
+  <div class="brand">
+    <span class="brand-icon">🗳️</span>
+    <div>
+      <h1>Voter Roll OCR — Booth Validator</h1>
+      <p class="brand-sub">Constituency 169 — बक्शी का तालाब, Lucknow</p>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="upload-section">
+    <div id="dropzone" class="dropzone">
+      <div class="dropzone-inner">
+        <div class="dropzone-icon">📄</div>
+        <div class="dropzone-title">Drop PDFs here or click to upload</div>
+        <div class="dropzone-sub">Multiple files supported · up to 50&nbsp;MB each</div>
+        <input id="fileInput" type="file" accept="application/pdf" multiple hidden />
+      </div>
+    </div>
+    <div id="uploadStatus" class="upload-status"></div>
+  </section>
+
+  <section class="stats-section">
+    <h2>Operational Dashboard</h2>
+    <div id="stats" class="stats-grid">
+      <div class="stat-card"><div class="stat-label">Total voters extracted</div><div class="stat-value" id="statVoters">—</div></div>
+      <div class="stat-card"><div class="stat-label">Booths processed</div><div class="stat-value" id="statBooths">—</div></div>
+      <div class="stat-card stat-ok"><div class="stat-label">Booths OK</div><div class="stat-value" id="statOk">—</div></div>
+      <div class="stat-card stat-warn"><div class="stat-label">Booths Warn</div><div class="stat-value" id="statWarn">—</div></div>
+      <div class="stat-card stat-mismatch"><div class="stat-label">Booths Mismatch</div><div class="stat-value" id="statMismatch">—</div></div>
+      <div class="stat-card cost"><div class="stat-label">Estimated cost</div><div class="stat-value" id="statCost">₹0</div></div>
+    </div>
+  </section>
+
+  <section class="jobs-section">
+    <div class="section-head">
+      <h2>Jobs</h2>
+      <button id="refreshBtn" class="btn-secondary">Refresh</button>
+    </div>
+    <div id="jobList" class="job-list">
+      <div class="empty">No jobs yet — upload a PDF to get started.</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <span>Powered by Sarvam AI Document Intelligence · Built for campaign analytics</span>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

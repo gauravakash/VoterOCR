@@ -1,0 +1,22 @@
+{"timestamp": "2026-04-30T01:24:31.955836Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-1-WI_22465075", "page": 2, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T01:28:18.879261Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-1-WI_22465075", "page": 35, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T01:53:56.973965Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-4-WI_24230393", "page": 2, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T01:55:02.012266Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-4-WI_24230393", "page": 14, "flash_score": 0.0, "failure_reasons": ["flash_error: ValidationError"]}
+{"timestamp": "2026-04-30T01:55:36.579462Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-4-WI_24230393", "page": 25, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:05:30.399657Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-19-WI_42918359", "page": 2, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:09:29.571109Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-19-WI_42918359", "page": 35, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:09:36.098694Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-19-WI_42918359", "page": 34, "flash_score": 0.6, "failure_reasons": ["too_few_voters (11 < 15)"]}
+{"timestamp": "2026-04-30T07:36:54.232281Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-545-WI_44806379", "page": 2, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:37:09.267981Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-545-WI_44806379", "page": 3, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:39:25.683950Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-545-WI_44806379", "page": 34, "flash_score": 0.6, "failure_reasons": ["too_few_voters (3 < 15)"]}
+{"timestamp": "2026-04-30T07:39:27.503926Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-545-WI_44806379", "page": 37, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:39:30.187598Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-545-WI_44806379", "page": 36, "flash_score": 0.6, "failure_reasons": ["too_few_voters (5 < 15)"]}
+{"timestamp": "2026-04-30T07:45:55.317307Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-2-WI_45349809", "page": 2, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:45:55.477191Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-1-WI_45349795", "page": 2, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:48:15.241898Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-1-WI_45349795", "page": 35, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:48:16.648945Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-2-WI_45349809", "page": 33, "flash_score": 0.6, "failure_reasons": ["too_few_voters (5 < 15)"]}
+{"timestamp": "2026-04-30T07:48:27.572623Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-2-WI_45349809", "page": 36, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:53:19.757077Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-53-WI_45788030", "page": 2, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:54:22.093972Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-53-WI_45788030", "page": 13, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:57:25.706256Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-53-WI_45788030", "page": 31, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}
+{"timestamp": "2026-04-30T07:57:39.325385Z", "pdf": "2026-EROLLGEN-S24-169-SIR-FinalRoll-Revision1-HIN-53-WI_45788030", "page": 28, "flash_score": 0.0, "failure_reasons": ["empty_extraction"]}

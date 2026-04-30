@@ -1,0 +1,337 @@
+:root {
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --text-soft: #475569;
+  --text-mute: #94a3b8;
+  --green: #16a34a;
+  --green-soft: #dcfce7;
+  --red: #dc2626;
+  --red-soft: #fee2e2;
+  --amber: #d97706;
+  --amber-soft: #fef3c7;
+  --gray-soft: #f1f5f9;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.brand-icon { font-size: 32px; }
+.brand h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.brand-sub {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin: 2px 0 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px;
+  width: 100%;
+  flex: 1;
+}
+
+section { margin-bottom: 32px; }
+section h2 {
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+  margin: 0 0 14px;
+}
+
+/* Dropzone */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  padding: 40px;
+  text-align: center;
+  background: var(--surface);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.dropzone:hover, .dropzone.drag-over {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dropzone-icon { font-size: 48px; margin-bottom: 8px; }
+.dropzone-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+.dropzone-sub { color: var(--text-soft); font-size: 13px; }
+
+.upload-status {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--text-soft);
+  min-height: 20px;
+}
+.upload-status.success { color: var(--green); }
+.upload-status.error { color: var(--red); }
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-soft);
+  font-weight: 500;
+}
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 6px;
+  color: var(--text);
+}
+.stat-card.stat-ok       { border-color: #86efac; background: var(--green-soft); }
+.stat-card.stat-warn     { border-color: #fcd34d; background: var(--amber-soft); }
+.stat-card.stat-mismatch { border-color: #fca5a5; background: var(--red-soft); }
+.stat-card.cost          { border-color: #c7d2fe; background: #eef2ff; }
+
+/* Jobs */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-secondary, .btn-primary, .btn-danger {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.12s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-secondary:hover { background: var(--gray-soft); }
+.btn-danger { color: var(--red); border-color: #fecaca; }
+.btn-danger:hover { background: var(--red-soft); }
+
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.empty {
+  text-align: center;
+  color: var(--text-mute);
+  padding: 40px;
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+
+.job-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.job-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.job-name {
+  font-weight: 600;
+  font-size: 15px;
+  word-break: break-all;
+}
+.job-meta {
+  font-size: 13px;
+  color: var(--text-soft);
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+.status-queued    { background: var(--gray-soft);   color: var(--text-soft); }
+.status-processing{ background: var(--accent-soft); color: var(--accent-dark); }
+.status-completed { background: var(--green-soft);  color: var(--green); }
+.status-failed    { background: var(--red-soft);    color: var(--red); }
+.status-cancelled { background: var(--amber-soft);  color: var(--amber); }
+
+.progress {
+  height: 8px;
+  width: 100%;
+  background: var(--gray-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  transition: width 0.4s ease;
+}
+.progress.completed .progress-bar { background: var(--green); }
+.progress.failed    .progress-bar { background: var(--red); }
+.progress.cancelled .progress-bar { background: var(--amber); }
+
+.religion-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--gray-soft);
+  margin-top: 6px;
+}
+.religion-bar > span { display: block; height: 100%; }
+.religion-bar .h-hindu   { background: #f97316; }
+.religion-bar .h-muslim  { background: #16a34a; }
+.religion-bar .h-sikh    { background: #eab308; }
+.religion-bar .h-unknown { background: #94a3b8; }
+
+.religion-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+.religion-legend .dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.religion-legend .dot.hindu   { background: #f97316; }
+.religion-legend .dot.muslim  { background: #16a34a; }
+.religion-legend .dot.sikh    { background: #eab308; }
+.religion-legend .dot.unknown { background: #94a3b8; }
+
+.validation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--gray-soft);
+  margin-top: 6px;
+  font-size: 13px;
+}
+.validation-row.val-ok       { background: var(--green-soft); border-color: #86efac; }
+.validation-row.val-warn     { background: var(--amber-soft); border-color: #fcd34d; }
+.validation-row.val-mismatch { background: var(--red-soft);   border-color: #fca5a5; }
+.validation-row.val-pending  { background: var(--gray-soft);  border-color: var(--border); }
+
+.validation-counts {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--text-soft);
+}
+.validation-counts strong { color: var(--text); font-weight: 600; }
+.validation-diff {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-soft);
+}
+.validation-badge {
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: white;
+  border: 1px solid var(--border);
+}
+.validation-badge.val-ok       { color: var(--green); border-color: #86efac; }
+.validation-badge.val-warn     { color: var(--amber); border-color: #fcd34d; }
+.validation-badge.val-mismatch { color: var(--red);   border-color: #fca5a5; }
+.validation-badge.val-pending  { color: var(--text-soft); }
+
+.job-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.job-error { color: var(--red); font-size: 13px; }
+
+.app-footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: var(--text-mute);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+
+@media (max-width: 600px) {
+  .container { padding: 20px; }
+  .app-header { padding: 14px 20px; }
+  .brand h1 { font-size: 16px; }
+  .stats-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+  .stat-value { font-size: 18px; }
+  .dropzone { padding: 28px 16px; }
+}
